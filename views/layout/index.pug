@@ -1,0 +1,16 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Bienes Raices | #{pagina}
+        link(rel="stylesheet", href="/css/app.css")
+        //-Definimos el espacio para los estilos de los archivos hijos
+        block styles
+    body.min-h-screen.bg-gray-50
+        
+        main(class="mx-auto container mt-10 px-2")
+            //-Aquí se insertará el contenido de cada vista que extienda este layout
+            block contenido
+        //-Scripts específicos que pueden inyectar las vistas hijas
+        block scripts
