@@ -1,3 +1,8 @@
+console.log('HOST:', process.env.BD_HOST);
+console.log('USUARIO:', process.env.BD_USUARIO);
+console.log('BASE DE DATOS:', process.env.BD_NOMBRE);
+console.log('PUERTO:', process.env.BD_PORT);
+
 console.log('--- VARIABLES DE ENTORNO DISPONIBLES ---');
 console.log(process.env);
 console.log('----------------------------------------');

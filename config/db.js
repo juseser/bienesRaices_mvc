@@ -1,6 +1,8 @@
 import { Sequelize } from "sequelize";
-import dotenv from 'dotenv';
-dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
+  import('dotenv').then(dotenv => dotenv.config());
+}
+
 console.log('HOST:', process.env.BD_HOST);
 console.log('PUERTO:', process.env.BD_PORT);
 console.log('USUARIO:', process.env.BD_USUARIO);
