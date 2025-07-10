@@ -1,3 +1,7 @@
+console.log('--- VARIABLES DE ENTORNO DISPONIBLES ---');
+console.log(process.env);
+console.log('----------------------------------------');
+
 import express from 'express';// Importa el framework Express, que se usa para crear el servidor web y manejar rutas, peticiones, etc.
 import csrf from 'csurf';// Importa el middleware 'csurf', que protege contra ataques CSRF (Cross-Site Request Forgery) usando tokens.
 import cookieParser from 'cookie-parser';// Importa 'cookie-parser', que permite leer y manejar cookies que llegan en las peticiones HTTP.
