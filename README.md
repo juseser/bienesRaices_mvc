@@ -4,7 +4,7 @@ Este proyecto es una aplicación web desarrollada con Node.js bajo el patrón MV
 
 ## 🌐 Enlace en Producción
 
-Próximamente...
+🔗 [https://bienesraices-mvc-n475.onrender.com/](https://bienesraices-mvc-n475.onrender.com/)
 
 ## 📁 Estructura del Proyecto
 
@@ -89,6 +89,11 @@ bienesRaices_mvc/
 - Dotenv
 - Webpack
 
+### 🚀 Despliegue
+
+- **Backend** desplegado en [Render](https://render.com/)
+- **Base de datos MySQL** en la nube proporcionada por [Filess.io](https://filess.io/)
+
 ## 🎯 Propósito del Proyecto
 
 Este proyecto fue desarrollado con los siguientes fines:
@@ -104,8 +109,8 @@ Este proyecto fue desarrollado con los siguientes fines:
 
 ## 📌 Notas
 
-- El proyecto aún no está desplegado, pero está listo para ser publicado en plataformas como Railway o Render.
-- Se empleó Mailtrap en etapa de desarrollo y Brevo para envío de correos reales.
+- El proyecto ya se encuentra desplegado y funcional en producción.
+- En desarrollo se usó Mailtrap para pruebas de correo; en producción se emplea Brevo (Sendinblue).
 
 ## 🧾 Licencia
 
