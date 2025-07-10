@@ -85,7 +85,7 @@ bienesRaices_mvc/
 - JWT (para autenticación)
 - Nodemailer (para envío de correos)
 - Brevo (SMTP)
-- Mapbox (mapas)
+- Leaflet.js (mapas)
 - Dotenv
 - Webpack
 
