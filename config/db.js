@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({path: '.env'})
 
 console.log('HOST:', process.env.BD_HOST);
 console.log('PUERTO:', process.env.BD_PORT);
@@ -13,7 +13,7 @@ const db = new Sequelize(
   process.env.BD_PASS,
   {
     host: process.env.BD_HOST,
-    port: process.env.BD_PORT ? Number(process.env.BD_PORT) : 3306, // fallback por si falta
+    port: process.env.BD_PORT,
     dialect: 'mysql',
     define: {
       timestamps: true,
