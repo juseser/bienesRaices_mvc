@@ -19,7 +19,7 @@ const db = new Sequelize(
       timestamps: true,
     },
     pool: {
-      max: 5,
+      max: 2,
       min: 0,
       acquire: 30000,
       idle: 10000,
