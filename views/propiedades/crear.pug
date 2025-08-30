@@ -12,7 +12,7 @@ block  contenido
          if errores 
             div(class="max-w-md mx-auto my-10")
                 each error in errores 
-                    p.bg-red-600.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-blod=error.msg
+                    p.bg-red-600.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold=error.msg
 
         div(class="bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
             form.space-y-8(method="POST" action="/propiedades/crear")

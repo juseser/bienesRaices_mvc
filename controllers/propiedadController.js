@@ -1,4 +1,5 @@
-import {unlink} from 'node:fs/promises';// Importamos la función unlink desde el módulo nativo 'fs/promises' de Node.js. Esta función permite eliminar archivos del sistema de archivos usando async/await
+import fs from 'node:fs/promises';// Importamos la función unlink desde el módulo nativo 'fs/promises' de Node.js. Esta función permite eliminar archivos del sistema de archivos usando async/await
+import path from 'path';
 import {validationResult} from 'express-validator';// Importamos validationResult desde express-validator. Esta función recoge los errores generados por las validaciones aplicadas al request (req)
 import {Precio,Categoria,Propiedad,Mensaje,Usuario} from '../models/index.js';
 import {esVendedor,formatearFecha} from '../helpers/index.js';
@@ -335,25 +336,34 @@ const guardarCambios = async (req, res ) => {
  *
  ***********************************************/
 const eliminar = async (req, res) => {
-    
-    const {id} = req.params
+    const { id } = req.params
 
     // Validar que la propiedad exista
     const propiedad = await Propiedad.findByPk(id)
-    if(!propiedad) {
+    if (!propiedad) {
         return res.redirect('/mis-propiedades')
     }
 
-    // Revisar que quien visita la URl, es quien creo la propiedad
-    if(propiedad.usuarioId.toString() !== req.usuario.id.toString() ) {
+    // Revisar que quien visita la URL es quien creó la propiedad
+    if (propiedad.usuarioId.toString() !== req.usuario.id.toString()) {
         return res.redirect('/mis-propiedades')
     }
 
-    // Eliminar la imagen
-    await unlink(`public/uploads/${propiedad.imagen}`)
-    console.log(`Se eliminó la imagen ${propiedad.imagen}`)
+    // Eliminar la imagen sin detener el proceso si falla
+    const rutaImagen = path.join('public/uploads', propiedad.imagen)
+    try {
+        await fs.unlink(rutaImagen)
+        console.log(`Se eliminó la imagen: ${propiedad.imagen}`)
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            console.warn(`La imagen no existía: ${propiedad.imagen}`)
+        } else {
+            console.error(`Error al eliminar la imagen: ${error.message}`)
+        }
+        // Aquí no hacemos return, porque queremos continuar de todos modos
+    }
 
-    // Eliminar la propiedad
+    // Eliminar la propiedad de la base de datos
     await propiedad.destroy()
     res.redirect('/mis-propiedades')
 }
